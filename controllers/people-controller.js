@@ -42,16 +42,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// People Delete Route
-router.delete('/:id', async (req, res) => {
-    // res.status(200).json({message: "people delete route: " + req.params.id})
-    try{
-        res.status(200).json(await People.findByIdAndRemove(req.params.id))
-    }catch(err){
-        res.status(400).json(err);
-    }
-});
-
 // People Update Route
 router.put('/:id', async (req, res) => {
     // console.log(req.body)
@@ -62,5 +52,15 @@ router.put('/:id', async (req, res) => {
         res.status(400).json(err);
     }
 });
+// People Delete Route
+router.delete('/:id', async (req, res) => {
+    // res.status(200).json({message: "people delete route: " + req.params.id})
+    try{
+        res.status(200).json(await People.findByIdAndRemove(req.params.id))
+    }catch(err){
+        res.status(400).json(err);
+    }
+});
+
 
 module.exports =router;
