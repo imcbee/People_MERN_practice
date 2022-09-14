@@ -10,12 +10,13 @@ const {PORT, MONGODB_URI} = process.env;
     // destructing the items in the .env file to able to use
     // allows use 4000, react use 3000
 const express = require('express');
+require('./config/db.connection')
 const app = express();
 
 // Add in mongoose
     // why in here? pure laziness, when you scale up, use the connection folder
-const mongoose = require('mongoose');
-mongoose.connect(MONGODB_URI);
+// const mongoose = require('mongoose');
+// mongoose.connect(MONGODB_URI);
 
 // My Controllers
 const peopleController = require('./controllers/people-controller')
@@ -31,10 +32,10 @@ const morgan = require('morgan');
 
 // Connection Events
     //these are from the mongo docs
-mongoose.connection
-  .on("open", () => console.log("Your are connected to mongoose"))
-  .on("close", () => console.log("Your are disconnected from mongoose"))
-  .on("error", (error) => console.log(error));
+// mongoose.connection
+//   .on("open", () => console.log("Your are connected to mongoose"))
+//   .on("close", () => console.log("Your are disconnected from mongoose"))
+//   .on("error", (error) => console.log(error));
 
 
 ////////////////////////////////
